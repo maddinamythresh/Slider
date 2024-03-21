@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Header from "./components/Header";
+import Images from "./components/Images";
+
+const arr=["picture1.jfif","picture2.jfif","picture3.jfif","picture4.jfif","picture5.jfif",
+                "picture6.jfif","picture7.jfif","picture8.jfif","picture9.jfif"];
 
 function App() {
+
+  const [img,setImg]=useState([null,null])
+
+  function handle(value){
+    setImg([arr[value],value])
+  }
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+       <Header onSet={handle} val={img} />
+       <hr />
+       <Images onSet={handle} />
     </div>
   );
 }
